@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonList } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonList, IonCard, IonCardContent, IonCardTitle, IonCardHeader } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
@@ -9,7 +9,7 @@ import { HttpOptions } from '@capacitor/core';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, RouterLink, IonItem, IonList, CommonModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, RouterLink, IonItem, IonList, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader],
 })
 export class HomePage {
 
