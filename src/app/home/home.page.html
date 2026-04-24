@@ -7,20 +7,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Today's Trending Movies</h1>
+  <h1>Today's Trending Movies:</h1>
 
 <ion-card *ngFor="let movie of movies">
-  <img src="https://image.tmdb.org/t/p/w500/3Qud19bBUrrJAzy0Ilm8gRJlJXP.jpg">
+  <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }} poster">
   <ion-card-header>
     <ion-card-title>{{ movie.title }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <p>{{ movie.overview }}</p>
-    <p>Release Date: {{ movie.release_date }}</p>
-    <p>Rating: {{ movie.vote_average }}</p>
+    <p><b>Release Date: {{ movie.release_date }}</b></p>
+    <p><b>Rating: {{ movie.vote_average }}</b></p>
   </ion-card-content>
 </ion-card>
-
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
   <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
   <ion-button [routerLink]="['/details']">Go to details page</ion-button>
