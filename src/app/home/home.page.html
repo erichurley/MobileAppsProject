@@ -7,7 +7,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>This is the homepage</h1>
+  <h1>Today's Trending Movies</h1>
+
+<ion-list>
+  <ion-item *ngFor="let movie of movies">
+    {{ movie.title }}
+  </ion-item>
+</ion-list>
+
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
   <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
   <ion-button [routerLink]="['/details']">Go to details page</ion-button>
