@@ -8,10 +8,10 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-searchbar placeholder="Enter a Movie Name..."></ion-searchbar>
-  <ion-button>Search</ion-button>
+  <ion-searchbar [(ngModel)]="searchString" placeholder="Enter a Movie Name..."></ion-searchbar>
+  <ion-button (click)="searchMovies()">Search</ion-button>
 
-  <h1>Today's Trending Movies:</h1>
+  <h1>{{homePageTitle}}</h1>
 
 <ion-card *ngFor="let movie of movies">
   <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }} poster">
