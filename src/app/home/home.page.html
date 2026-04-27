@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Displays student number on page -->
     <ion-title>
       G00485518
     </ion-title>
@@ -8,21 +9,39 @@
 
 <ion-content [fullscreen]="true">
 
+  <!-- Search bar using Ion-searchbar with two way data binding (ngModel) -->
   <ion-searchbar [(ngModel)]="searchString" placeholder="Enter a Movie Name..."></ion-searchbar>
+  
+  <!-- Search button using Ion-button with event binding to call searchMovies() on click -->
   <ion-button (click)="searchMovies()">Search</ion-button>
-
+  
+  <!-- Homepage title using string interpolation to dynamically update title -->
   <h1>{{homePageTitle}}</h1>
 
+<!-- ngFor structural directive creates a new ion card for every movie in the movies array. -->
 <ion-card *ngFor="let movie of movies">
+
+  <!-- Movie poster displayed by combining the base URL with the movie poster
+   path using property binding and string concatenation.  -->
   <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }} poster">
   <ion-card-header>
+
+    <!-- Displays the title of each movie -->
     <ion-card-title>{{ movie.title }}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
+
+    <!-- Displays the overview of each movie -->
     <p>{{ movie.overview }}</p>
+
+    <!-- Displays the release date of each movie -->
     <p><b>Release Date: {{ movie.release_date }}</b></p>
+
+    <!-- Displays the rating of each movie -->
     <p><b>Rating: {{ movie.vote_average }}</b></p>
   </ion-card-content>
+
+<!-- routerLink buttons used for testing purposes to navigate between pages -->
 </ion-card>
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
   <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
