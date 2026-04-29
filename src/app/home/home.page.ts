@@ -5,12 +5,14 @@ import { RouterLink } from '@angular/router';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
 import { FormsModule } from '@angular/forms';
+import { Data } from '../services/data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, RouterLink, IonItem, IonList, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonInput, IonSearchbar, FormsModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, RouterLink, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonSearchbar, FormsModule],
 })
 export class HomePage {
 
@@ -28,8 +30,8 @@ export class HomePage {
     url: ''
   }
 
-  //Creates a private instance of MyHttpService for making HTTP requests.
-  constructor(private mhs:MyHttpService) {}
+  //Creates a private instance of MyHttpService, Router & Data service.
+  constructor(private mhs:MyHttpService, private router:Router, private data:Data) {}
 
   //Uses ngOnInit lifecycle hook to set movies to array and call getTrendingMovies() function.
   ngOnInit() {
@@ -73,5 +75,11 @@ export class HomePage {
     //Update the movies array with the results from the data returned from the API call using get() function.
     this.movies = result.data.results;
 
+  }
+
+  //Stores the selected movie in the data service and navigates to the movie-details page. 
+  movieDetails(movie: any) {
+    this.data.clickedMovie = movie;
+    this.router.navigate(['/movie-details']);
   }
 }

@@ -18,12 +18,12 @@
   <!-- Homepage title using string interpolation to dynamically update title -->
   <h1>{{homePageTitle}}</h1>
 
-<!-- ngFor structural directive creates a new ion card for every movie in the movies array. -->
-<ion-card *ngFor="let movie of movies">
+<!-- ngFor structural directive creates a new ion card for every movie in the movies array. Calls movie details method when clicked. -->
+<ion-card *ngFor="let movie of movies" (click)="movieDetails(movie)">
 
   <!-- Movie poster displayed by combining the base URL with the movie poster
    path using property binding and string concatenation.  -->
-  <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }} poster">
+  <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path">
   <ion-card-header>
 
     <!-- Displays the title of each movie -->
