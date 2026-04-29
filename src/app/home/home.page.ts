@@ -81,7 +81,7 @@ export class HomePage {
   }
 
   //Stores the selected movie in the data service and navigates to the movie-details page. 
-  movieDetails(movie: any) {
+  clickMovie(movie: any) {
     this.data.clickedMovie = movie;
     this.router.navigate(['/movie-details']);
   }
