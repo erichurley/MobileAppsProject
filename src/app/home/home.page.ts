@@ -19,6 +19,9 @@ export class HomePage {
   //Variable to store movies data.
   movies: any;
 
+  //Variable to store the api key
+  apiKey: string = "87f190fd1f3c1281452f0b3458f9401c";
+
   //Variable to store the text string entered in search bar.
   searchString: string = '';
 
@@ -42,7 +45,7 @@ export class HomePage {
   //Asynchronous function which updates the url and calls get() function from my-http.service.
   async getTrendingMovies() {
     this.options = {
-      url: 'https://api.themoviedb.org/3/trending/movie/day?api_key=87f190fd1f3c1281452f0b3458f9401c'
+      url: 'https://api.themoviedb.org/3/trending/movie/day?api_key=' + this.apiKey
     }
     //Create result variable and assign to it the return from the get() function.
     let result = await this.mhs.get(this.options);
@@ -63,7 +66,7 @@ export class HomePage {
 
     //Sets the URL to the search URL and concatenates the searchString variable to the end.
     this.options = {
-      url: 'https://api.themoviedb.org/3/search/movie?api_key=87f190fd1f3c1281452f0b3458f9401c&query=' + this.searchString
+      url: 'https://api.themoviedb.org/3/search/movie?api_key=' + this.apiKey + '&query=' + this.searchString
     }
 
     //Updates the homepage title to reflect the search results.
