@@ -1,41 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>movie-details</ion-title>
+    <!-- Displays the movie title as the page name -->
+    <ion-title>{{movie.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Movie-Details:</h1>
 
-<!-- ngIf displays ion card when a movie has been selected -->
-<ion-card *ngIf="movie">
-
-  <!-- Movie poster displayed by combining the base URL with the movie poster
-   path using property binding and string concatenation.  -->
-  <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path">
-
-  <ion-card-header>
-
-    <!-- Displays the title of each movie -->
-    <ion-card-title>{{ movie.title }}</ion-card-title>
-  </ion-card-header>
+  <!-- Ion-card which displays the movie description and the add to favourites button -->
+  <ion-card>
+    <ion-card-content>
+      <p>{{movie.overview}}</p>
+      <br>
+      <ion-button>Add to Favourites</ion-button>
+    </ion-card-content>
+  </ion-card>
   
-  <ion-card-content>
+  <h3>Cast:</h3>
 
-    <!-- Displays the overview of each movie -->
-    <p>{{ movie.overview }}</p>
+  <!-- ngFor displays an ion-card for each cast member -->
+  <ion-card *ngFor="let c of cast">
 
-    <!-- Displays the release date of each movie -->
-    <p><b>Release Date: {{ movie.release_date }}</b></p>
+    <!-- This displays the cast member image if profile_path exists. Without *ngIf it can show broken img links -->
+    <img *ngIf="c.profile_path" [src]="'https://image.tmdb.org/t/p/w185' + c.profile_path">
 
-    <!-- Displays the rating of each movie -->
-    <p><b>Rating: {{ movie.vote_average }}</b></p>
-  </ion-card-content>
-
+    <!-- Shows character name and actor name -->
+    <h3>{{c.character}}</h3>
+    <p>{{c.name}}</p>
   </ion-card>
 
+  <!-- Buttons for testing - REMOVE LATER -->
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
-  <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
   <ion-button [routerLink]="['/details']">Go to details page</ion-button>
   <ion-button [routerLink]="['/favourites']">Go to favourites page</ion-button>
 </ion-content>
