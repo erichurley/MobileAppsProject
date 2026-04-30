@@ -1,11 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>details</ion-title>
+    <ion-title>{{personDetails.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>This is the Details page</h1>
+  <ion-card>
+    <!-- This displays the cast member image if profile_path exists. Without *ngIf it can show broken img links -->
+    <img *ngIf="personDetails.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + personDetails.profile_path">
+  </ion-card>
+
+
+
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
   <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
   <ion-button [routerLink]="['/details']">Go to details page</ion-button>
