@@ -14,11 +14,15 @@
 
     <!-- Displays a list of alternate names as ion items only if they exist in the array -->
     <ion-list *ngIf="personDetails.also_known_as">
+      <ion-list-header>Also Known As:</ion-list-header>
       <ion-item *ngFor="let p of personDetails.also_known_as">{{p}}</ion-item>
     </ion-list>
 
     <!-- Displays their DOB if one is available -->
-    <h5 *ngIf="personDetails.birthday">{{personDetails.birthday}}</h5>
+    <h5 *ngIf="personDetails.birthday">Born: {{personDetails.birthday}}</h5>
+
+    <!-- Displays their DOD if one is available -->
+    <h5 *ngIf="personDetails.deathday">Died: {{personDetails.deathday}}</h5>
 
     <!-- Displays their place of birth if one is available -->
     <h5 *ngIf="personDetails.place_of_birth">{{personDetails.place_of_birth}}</h5>
