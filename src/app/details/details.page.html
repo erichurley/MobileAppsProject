@@ -30,6 +30,19 @@
     <!-- Displays their biography if one is available -->
     <p *ngIf="personDetails.biography">{{personDetails.biography}}</p>
 
+    <!-- Displays a list and total count of other movies this person was in as ion items if they are available. -->
+    <ion-list *ngIf="otherMovies.length > 0">
+      <ion-list-header>Other Movies ({{otherMovies.length}}):</ion-list-header>
+      <ion-item *ngFor="let om of otherMovies">
+
+        <!-- Display movie title -->
+        <p>{{om.title}}</p> 
+
+        <!-- Display movie poster if there is one available. Auto margin and width properties set to match the example on the project brief -->
+        <img *ngIf="om.poster_path" [src]="'https://image.tmdb.org/t/p/w92' + om.poster_path" style="margin-left: auto; width: 50px;"> 
+      </ion-item>
+    </ion-list>
+
   </ion-card>
 
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>

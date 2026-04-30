@@ -22,6 +22,9 @@ export class DetailsPage implements OnInit {
   //Variable to hold person details object
   personDetails: any;
 
+  //Variable to hold other movies info
+  otherMovies: any;
+
   //Variable to store the api key
   apiKey: string = "87f190fd1f3c1281452f0b3458f9401c";
 
@@ -36,6 +39,7 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.person = this.data.clickedPerson;
     this.getPersonDetails();
+    this.getOtherMovies();
   }
 
   //Asynchronous function to retrieve person info.
@@ -51,6 +55,22 @@ export class DetailsPage implements OnInit {
 
     //Update the personDetails array with the results from the data returned from the API call using get() function.
     this.personDetails = result.data;
+
+  }
+
+  //Asynchronous function to retrieve the other movies the person was credited in.
+  async getOtherMovies() { 
+
+    //Sets the URL to the person URL and concatenates the person ID, movie credits and API Key variable to complete the URL for the API call.
+    this.options = {
+      url: 'https://api.themoviedb.org/3/person/' + this.person.id + '/movie_credits?api_key=' + this.apiKey
+    }
+
+    //Create result variable and assign to it the return from the get() function.
+    let result = await this.mhs.get(this.options);
+
+    //Update the otherMovies variable with the results from the data returned from the API call using get() function.
+    this.otherMovies = result.data.cast;
 
   }
 
