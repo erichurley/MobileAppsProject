@@ -6,8 +6,22 @@
 
 <ion-content [fullscreen]="true">
   <ion-card>
-    <!-- This displays the cast member image if profile_path exists. Without *ngIf it can show broken img links -->
+    <!-- This displays the persons image if profile_path exists. Without *ngIf it can show broken img links -->
     <img *ngIf="personDetails.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + personDetails.profile_path">
+
+    <!-- Displays their alternate name -->
+    <h3>{{personDetails.also_known_as}}</h3>
+
+    <!-- Displays their DOB -->
+    <h5>{{personDetails.birthday}}</h5>
+
+    <!-- Displays their place of birth -->
+    <h5>{{personDetails.place_of_birth}}</h5>
+
+    <!-- Displays their biography -->
+    <p>{{personDetails.biography}}</p>
+
+
   </ion-card>
 
 
