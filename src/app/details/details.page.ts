@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { HttpOptions } from '@capacitor/core';
 import { Data } from '../services/data';
 import { MyHttpService } from '../services/my-http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -33,7 +34,7 @@ export class DetailsPage implements OnInit {
       url: ''
     }
 
-  constructor(private data:Data, private mhs:MyHttpService) { }
+  constructor(private data:Data, private mhs:MyHttpService, private router:Router) { }
 
   //Retrieves selected person from shared data service, calls getPersonDetails() function.
   ngOnInit() {
@@ -72,6 +73,11 @@ export class DetailsPage implements OnInit {
     //Update the otherMovies variable with the results from the data returned from the API call using get() function.
     this.otherMovies = result.data.cast;
 
+  }
+
+  openOtherMovie(movie: any) {
+    this.data.clickedMovie = movie;
+    this.router.navigate(['/movie-details']);
   }
 
 }
