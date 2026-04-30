@@ -1,11 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{personDetails.name}}</ion-title>
+    <!-- *ngIf here only renders the title once personDetails has been loaded to avoid double clicking errors -->
+    <ion-title *ngIf="personDetails">{{personDetails.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+
+  <!-- *ngIf here prevents the card from rendering before the data is available -->
+  <ion-card *ngIf="personDetails">
+
     <!-- This displays the persons image if profile_path exists. -->
     <img *ngIf="personDetails.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + personDetails.profile_path">
 
@@ -31,7 +35,7 @@
     <p *ngIf="personDetails.biography">{{personDetails.biography}}</p>
 
     <!-- Displays a list and total count of other movies this person was in as ion items if they are available. -->
-    <ion-list *ngIf="otherMovies.length > 0">
+    <ion-list *ngIf="otherMovies && otherMovies.length > 0">
       <ion-list-header>Other Movies ({{otherMovies.length}}):</ion-list-header>
       <ion-item *ngFor="let om of otherMovies" button (click)="openOtherMovie(om)">
 
@@ -44,9 +48,4 @@
     </ion-list>
 
   </ion-card>
-
-  <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
-  <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
-  <ion-button [routerLink]="['/details']">Go to details page</ion-button>
-  <ion-button [routerLink]="['/favourites']">Go to favourites page</ion-button>
 </ion-content>

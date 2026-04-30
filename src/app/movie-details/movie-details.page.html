@@ -24,13 +24,11 @@
     <!-- This displays the cast member image if profile_path exists. Without *ngIf it can show broken img links -->
     <img *ngIf="c.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + c.profile_path">
 
+    <!-- If profile_path does not exist. Show 'no image' -->
+    <p *ngIf="!c.profile_path">No Image</p>
+
     <!-- Shows character name and actor name -->
     <h3>{{c.character}}</h3>
     <p>{{c.name}}</p>
   </ion-card>
-
-  <!-- Buttons for testing - REMOVE LATER -->
-  <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
-  <ion-button [routerLink]="['/details']">Go to details page</ion-button>
-  <ion-button [routerLink]="['/favourites']">Go to favourites page</ion-button>
 </ion-content>

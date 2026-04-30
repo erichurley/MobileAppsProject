@@ -39,6 +39,7 @@ export class MovieDetailsPage implements OnInit {
 
   //Retrieves selected movie from shared data service, sets cast & crew variables as arrays, calls getCastAndCrew() function.
   ngOnInit() {
+    console.log("DETAILS PAGE PERSON:", this.data.clickedPerson?.name);
     this.movie = this.data.clickedMovie;
     this.cast = [];
     this.crew = [];
@@ -73,6 +74,7 @@ export class MovieDetailsPage implements OnInit {
 
   //Stores the selected person in the data service and navigates to the details page. 
   clickPerson(person: any) {
+    console.log("CLICKED:", person.name);
     this.data.clickedPerson = person;
     this.router.navigate(['/details']);
   }
