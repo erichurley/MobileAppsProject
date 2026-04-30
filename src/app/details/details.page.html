@@ -6,20 +6,23 @@
 
 <ion-content [fullscreen]="true">
   <ion-card>
-    <!-- This displays the persons image if profile_path exists. Without *ngIf it can show broken img links -->
+    <!-- This displays the persons image if profile_path exists. -->
     <img *ngIf="personDetails.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + personDetails.profile_path">
 
-    <!-- Displays their alternate name -->
-    <h3>{{personDetails.also_known_as}}</h3>
+    <!-- If profile_path does not exist. Show 'no image' -->
+    <p *ngIf="!personDetails.profile_path">No Image</p>
 
-    <!-- Displays their DOB -->
-    <h5>{{personDetails.birthday}}</h5>
+    <!-- Displays alternate name if one exists in the array. First array entry is shown only. -->
+    <h3 *ngIf="personDetails.also_known_as.length > 0">{{personDetails.also_known_as[0]}}</h3>
 
-    <!-- Displays their place of birth -->
-    <h5>{{personDetails.place_of_birth}}</h5>
+    <!-- Displays their DOB if one is available -->
+    <h5 *ngIf="personDetails.birthday">{{personDetails.birthday}}</h5>
 
-    <!-- Displays their biography -->
-    <p>{{personDetails.biography}}</p>
+    <!-- Displays their place of birth if one is available -->
+    <h5 *ngIf="personDetails.place_of_birth">{{personDetails.place_of_birth}}</h5>
+
+    <!-- Displays their biography if one is available -->
+    <p *ngIf="personDetails.biography">{{personDetails.biography}}</p>
 
 
   </ion-card>
