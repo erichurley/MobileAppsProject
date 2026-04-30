@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class Data {
 
   clickedMovie: any;
+  clickedPerson: any;
   
 }

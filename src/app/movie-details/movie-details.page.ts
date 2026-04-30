@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { Data } from '../services/data';
 import { HttpOptions } from '@capacitor/core';
 import { MyHttpService } from '../services/my-http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-details',
@@ -33,8 +34,8 @@ export class MovieDetailsPage implements OnInit {
       url: ''
     }
 
-  //Creates a private instance of data service.
-  constructor(private data:Data, private mhs:MyHttpService) { }
+  //Creates a private instance of data service, MyHttpService and Router.
+  constructor(private data:Data, private mhs:MyHttpService, private router:Router) { }
 
   //Retrieves selected movie from shared data service, sets cast & crew variables as arrays, calls getCastAndCrew() function.
   ngOnInit() {
@@ -61,6 +62,12 @@ export class MovieDetailsPage implements OnInit {
     //Update the crew array with the results from the data returned from the API call using get() function.
     this.crew = result.data.crew;
 
+  }
+
+  //Stores the selected person in the data service and navigates to the details page. 
+  clickPerson(person: any) {
+    this.data.clickedPerson = person;
+    this.router.navigate(['/details']);
   }
 
 }
