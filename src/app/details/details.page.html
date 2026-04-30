@@ -12,8 +12,10 @@
     <!-- If profile_path does not exist. Show 'no image' -->
     <p *ngIf="!personDetails.profile_path">No Image</p>
 
-    <!-- Displays alternate name if one exists in the array. First array entry is shown only. -->
-    <h3 *ngIf="personDetails.also_known_as.length > 0">{{personDetails.also_known_as[0]}}</h3>
+    <!-- Displays a list of alternate names as ion items only if they exist in the array -->
+    <ion-list *ngIf="personDetails.also_known_as">
+      <ion-item *ngFor="let p of personDetails.also_known_as">{{p}}</ion-item>
+    </ion-list>
 
     <!-- Displays their DOB if one is available -->
     <h5 *ngIf="personDetails.birthday">{{personDetails.birthday}}</h5>
@@ -24,10 +26,7 @@
     <!-- Displays their biography if one is available -->
     <p *ngIf="personDetails.biography">{{personDetails.biography}}</p>
 
-
   </ion-card>
-
-
 
   <ion-button [routerLink]="['/home']">Go to homepage</ion-button>
   <ion-button [routerLink]="['/movie-details']">Go to movie details page</ion-button>
