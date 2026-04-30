@@ -45,6 +45,13 @@ export class MovieDetailsPage implements OnInit {
     this.getCastAndCrew();
   }
 
+  //Required because ngOnInit() was not being triggered when revisiting the same page - this ensures the selected movie
+  //and the cast/crew are refreshed each time the page is visited.
+  ionViewWillEnter() {
+    this.movie = this.data.clickedMovie;
+    this.getCastAndCrew();
+  }
+
   //Asynchronous function to retrieve cast & crew movie info.
   async getCastAndCrew() { 
 
