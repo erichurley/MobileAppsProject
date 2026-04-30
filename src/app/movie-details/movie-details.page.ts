@@ -48,7 +48,7 @@ export class MovieDetailsPage implements OnInit {
   //Asynchronous function to retrieve cast & crew movie info.
   async getCastAndCrew() { 
 
-    //Sets the URL to the search URL and concatenates the searchString variable to the end.
+    //Sets the URL to the movie URL and concatenates the movie ID and API Key variable to complete the URL for the API call.
     this.options = {
       url: 'https://api.themoviedb.org/3/movie/' + this.movie.id + '/credits?api_key=' + this.apiKey
     }
