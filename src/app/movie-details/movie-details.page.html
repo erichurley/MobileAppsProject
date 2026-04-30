@@ -19,7 +19,7 @@
   <h3>Cast:</h3>
 
   <!-- ngFor displays an ion-card for each cast member -->
-  <ion-card *ngFor="let c of cast" (click)="clickPerson(c)">
+  <ion-card *ngFor="let c of cast" button (click)="clickPerson(c)">
 
     <!-- This displays the cast member image if profile_path exists. Without *ngIf it can show broken img links -->
     <img *ngIf="c.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + c.profile_path">

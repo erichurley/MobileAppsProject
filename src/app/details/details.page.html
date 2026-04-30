@@ -33,7 +33,7 @@
     <!-- Displays a list and total count of other movies this person was in as ion items if they are available. -->
     <ion-list *ngIf="otherMovies.length > 0">
       <ion-list-header>Other Movies ({{otherMovies.length}}):</ion-list-header>
-      <ion-item *ngFor="let om of otherMovies" (click)="openOtherMovie(om)">
+      <ion-item *ngFor="let om of otherMovies" button (click)="openOtherMovie(om)">
 
         <!-- Display movie title -->
         <p>{{om.title}}</p> 
