@@ -79,4 +79,8 @@ export class MovieDetailsPage implements OnInit {
     this.router.navigate(['/details']);
   }
 
+  addToFavourites() {
+    this.data.addFavourite(this.movie);
+  }
+
 }

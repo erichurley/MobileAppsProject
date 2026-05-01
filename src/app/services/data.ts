@@ -26,4 +26,9 @@ export class Data {
     return await this.storage.get(key);
   }
   
+  async addFavourite(movie: any) {
+    this.favourites.push(movie);
+    await this.set('favourites', this.favourites);
+  }
+  
 }
