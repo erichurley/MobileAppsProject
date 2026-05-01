@@ -3,7 +3,7 @@
     <ion-title>Favourites</ion-title>
 
     <!-- Navigation button to bring the user to the homepage -->
-    <ion-button slot="end" [routerLink]="['/home']">
+    <ion-button slot="end" [routerLink]="['/home']" title="Home">
       <ion-icon name="home"></ion-icon>
     </ion-button>
 
@@ -48,12 +48,12 @@
     <p><b>Rating: {{ movie.vote_average }}</b></p>
 
     <!-- Button which calls clickMovie() function in order to navigate user to the movie-details  -->
-    <ion-button color="success" (click)="clickMovie(movie)">
+    <ion-button color="success" (click)="clickMovie(movie)" title="View Details">
       <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
     </ion-button>
 
     <!-- Button which calls removeMovie() function which deletes a single movie from favourites  -->
-    <ion-button color="danger" (click)="remove(movie)">
+    <ion-button color="danger" (click)="remove(movie)" title="Remove from Favourites">
       <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
     </ion-button>
 

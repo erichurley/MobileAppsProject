@@ -4,12 +4,12 @@
     <ion-title>{{movie.title}} ({{movie.release_date.slice(0,4)}})</ion-title>
 
     <!-- Navigation button to bring the user to the homepage -->
-    <ion-button slot="end" [routerLink]="['/home']">
+    <ion-button slot="end" [routerLink]="['/home']" title="Home">
       <ion-icon name="home"></ion-icon>
     </ion-button>
 
     <!-- Navigation button to the favourites page -->
-    <ion-button color="danger" slot="end" [routerLink]="['/favourites']">
+    <ion-button color="danger" slot="end" [routerLink]="['/favourites']" title="Favourites">
       <ion-icon name="heart"></ion-icon>
     </ion-button>
 
@@ -21,6 +21,11 @@
   <!-- Ion-card which displays the movie description and the add to favourites button -->
   <ion-card>
     <ion-card-content>
+
+      <!-- Movie poster displayed by combining the base URL with the movie poster
+      path using property binding and string concatenation.  -->
+      <img [src]="'https://image.tmdb.org/t/p/w185' + movie.poster_path">
+
       <p>{{movie.overview}}</p>
       <br>
       <ion-button [fill]="buttonFill" [color]="buttonColour" (click)="toggleFavourite()">{{buttonText}}

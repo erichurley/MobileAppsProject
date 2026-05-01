@@ -4,12 +4,12 @@
     <ion-title *ngIf="personDetails">{{personDetails.name}}</ion-title>
 
     <!-- Navigation button to bring the user to the homepage -->
-    <ion-button slot="end" [routerLink]="['/home']">
+    <ion-button slot="end" [routerLink]="['/home']" title="Home">
       <ion-icon name="home"></ion-icon>
     </ion-button>
 
     <!-- Navigation button to the favourites page -->
-    <ion-button color="danger" slot="end" [routerLink]="['/favourites']">
+    <ion-button color="danger" slot="end" [routerLink]="['/favourites']" title="Favourites">
       <ion-icon name="heart"></ion-icon>
     </ion-button>
 
