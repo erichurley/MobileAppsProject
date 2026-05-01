@@ -26,11 +26,13 @@
   <!-- Movie poster displayed by combining the base URL with the movie poster
    path using property binding and string concatenation.  -->
   <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path">
+  
   <ion-card-header>
 
     <!-- Displays the title of each movie -->
     <ion-card-title>{{ movie.title }}</ion-card-title>
   </ion-card-header>
+
   <ion-card-content>
 
     <!-- Displays the overview of each movie -->
@@ -43,6 +45,5 @@
     <p><b>Rating: {{ movie.vote_average }}</b></p>
   </ion-card-content>
 
-<!-- routerLink buttons used for testing purposes to navigate between pages -->
 </ion-card>
 </ion-content>

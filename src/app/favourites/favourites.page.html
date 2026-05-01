@@ -1,9 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>favourites</ion-title>
+    <ion-title>Favourites</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>This is the Favourites page</h1>
+  <h1>Your Favourite Movies:</h1>
+
+  <ion-button color="danger">Remove All
+    <ion-icon slot="start" name="trash-outline"></ion-icon>
+  </ion-button>
+
+  <!-- ngFor structural directive creates a new ion card for every movie in the favourites array. -->
+<ion-card *ngFor="let movie of favourites" button (click)="clickMovie(movie)">
+
+  <!-- Movie poster displayed by combining the base URL with the movie poster
+   path using property binding and string concatenation.  -->
+  <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w300' + movie.poster_path">
+  <ion-card-header>
+
+    <!-- Displays the title of each movie -->
+    <ion-card-title>{{ movie.title }}</ion-card-title>
+
+  </ion-card-header>
+
+  <ion-card-content>
+
+    <!-- Displays the overview of each movie -->
+    <p>{{ movie.overview }}</p>
+
+    <!-- Displays the release date of each movie -->
+    <p><b>Release Date: {{ movie.release_date }}</b></p>
+
+    <!-- Displays the rating of each movie -->
+    <p><b>Rating: {{ movie.vote_average }}</b></p>
+
+    <ion-button color="danger">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+
+  </ion-card-content>
+
+</ion-card>
+
 </ion-content>
