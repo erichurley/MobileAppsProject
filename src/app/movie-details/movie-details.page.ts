@@ -38,6 +38,7 @@ export class MovieDetailsPage implements OnInit {
   //Variables to store favourites button text & colour which change depending on whether movie is already in favourites or not.
   buttonText: string = "Add To Favourites";
   buttonFill: string = "solid";
+  buttonColour: string = "success";
 
   //Creates a private instance of data service, MyHttpService and Router.
   constructor(private data:Data, private mhs:MyHttpService, private router:Router) { 
@@ -60,10 +61,12 @@ export class MovieDetailsPage implements OnInit {
     if (this.isFavourite()) {
       this.buttonText = "Remove From Favourites";
       this.buttonFill = "solid";
+      this.buttonColour = "danger";
 
     } else {
         this.buttonText = "Add To Favourites";
         this.buttonFill = "outline";
+        this.buttonColour = "success";
     }
 
     this.getCastAndCrew();
@@ -122,11 +125,13 @@ export class MovieDetailsPage implements OnInit {
       this.data.removeFavourite(this.movie);
       this.buttonText = "Add To Favourites";
       this.buttonFill = "outline";
+      this.buttonColour = "success";
 
     } else {
         this.data.addFavourite(this.movie);
         this.buttonText = "Remove From Favourites";
         this.buttonFill = "solid";
+        this.buttonColour = "danger";
     }
   }
 

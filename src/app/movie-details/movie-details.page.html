@@ -23,7 +23,7 @@
     <ion-card-content>
       <p>{{movie.overview}}</p>
       <br>
-      <ion-button [fill]="buttonFill" (click)="toggleFavourite()">{{buttonText}}
+      <ion-button [fill]="buttonFill" [color]="buttonColour" (click)="toggleFavourite()">{{buttonText}}
         <ion-icon slot="start" name="heart"></ion-icon>
       </ion-button>
     </ion-card-content>
