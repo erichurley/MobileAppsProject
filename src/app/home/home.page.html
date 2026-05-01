@@ -19,7 +19,7 @@
   <ion-searchbar [(ngModel)]="searchString" placeholder="Search for a Movie..." (keyup.enter)="searchMovies()"></ion-searchbar>
   
   <!-- Search button using Ion-button with event binding to call searchMovies() on click -->
-  <ion-button (click)="searchMovies()">Search
+  <ion-button expand="block" (click)="searchMovies()">Search
     <ion-icon name="search-outline"></ion-icon>
   </ion-button>
   
