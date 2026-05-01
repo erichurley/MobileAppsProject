@@ -34,6 +34,7 @@
     </ion-card-content>
   </ion-card>
   
+  <!-- Section to display the cast of the movie -->
   <h3>Cast:</h3>
 
   <!-- ngFor displays an ion-card for each cast member -->
@@ -49,4 +50,25 @@
     <h3>{{c.character}}</h3>
     <p>{{c.name}}</p>
   </ion-card>
+
+  <br>
+
+    <!-- Section to display the crew of the movie -->
+  <h3>Crew:</h3>
+
+  <!-- ngFor displays an ion-card for each crew member -->
+  <ion-card *ngFor="let c of crew" button (click)="clickPerson(c)">
+
+    <!-- This displays the cast member image if profile_path exists. Without *ngIf it can show broken img links -->
+    <img *ngIf="c.profile_path" [src]="'https://image.tmdb.org/t/p/w300' + c.profile_path">
+
+    <!-- If profile_path does not exist. Show 'no image' -->
+    <p *ngIf="!c.profile_path">No Image</p>
+
+    <!-- Shows job and crew name -->
+    <h3>{{c.job}}</h3>
+    <p>{{c.name}}</p>
+    
+  </ion-card>
+
 </ion-content>
