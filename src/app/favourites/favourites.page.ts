@@ -6,13 +6,14 @@ import { Data } from '../services/data';
 import { addIcons } from 'ionicons';
 import { trashOutline, eyeOutline } from 'ionicons/icons';
 import { Router } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-favourites',
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonIcon, RouterLink]
 })
 export class FavouritesPage implements OnInit {
 
@@ -39,6 +40,11 @@ export class FavouritesPage implements OnInit {
   remove(movie: any) {
   this.data.removeFavourite(movie);
   this.favourites = this.data.favourites;
+}
+
+  removeAll() {
+  this.data.clearFavourites();
+  this.favourites = [];
 }
 
 }

@@ -5,14 +5,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>Your Favourite Movies:</h1>
 
-  <ion-button color="danger">Remove All
+  <!-- Heading for favourites list -->
+  <h1>Your Favourites List:</h1>
+
+  <!-- Placeholder text and button for if the favourites is empty - prompts user back to homepage with routerlink button -->
+  <ion-button *ngIf="favourites.length > 0" color="danger" (click)="removeAll()">Remove All
     <ion-icon slot="start" name="trash-outline"></ion-icon>
   </ion-button>
 
+  <h4 *ngIf="favourites.length == 0">Oops...It Looks Like Your Favourites List is Empty!</h4>
+  <ion-button *ngIf="favourites.length == 0" color="warning" [routerLink]="['/home']">Head to Homepage to Find Some Movies</ion-button>
+
   <!-- ngFor structural directive creates a new ion card for every movie in the favourites array. -->
-<ion-card *ngFor="let movie of favourites">
+  <ion-card *ngFor="let movie of favourites">
 
   <!-- Movie poster displayed by combining the base URL with the movie poster
    path using property binding and string concatenation.  -->
@@ -35,10 +41,12 @@
     <!-- Displays the rating of each movie -->
     <p><b>Rating: {{ movie.vote_average }}</b></p>
 
+    <!-- Button which calls clickMovie() function in order to navigate user to the movie-details  -->
     <ion-button color="success" (click)="clickMovie(movie)">
       <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
     </ion-button>
 
+    <!-- Button which calls removeMovie() function which deletes a single movie from favourites  -->
     <ion-button color="danger" (click)="remove(movie)">
       <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
     </ion-button>

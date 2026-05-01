@@ -66,4 +66,12 @@ export class Data {
     this.favourites = await this.get('favourites');
   }  
   
+  //Function to clear all favourites
+  async clearFavourites() {
+  this.favourites = [];
+
+  //Save the updated empty list to storage
+  await this.set('favourites', this.favourites);
+}
+
 }
