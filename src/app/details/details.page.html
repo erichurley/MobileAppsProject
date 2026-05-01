@@ -2,6 +2,17 @@
   <ion-toolbar>
     <!-- *ngIf here only renders the title once personDetails has been loaded to avoid double clicking errors -->
     <ion-title *ngIf="personDetails">{{personDetails.name}}</ion-title>
+
+    <!-- Navigation button to bring the user to the homepage -->
+    <ion-button slot="end" [routerLink]="['/home']">
+      <ion-icon name="home"></ion-icon>
+    </ion-button>
+
+    <!-- Navigation button to the favourites page -->
+    <ion-button color="danger" slot="end" [routerLink]="['/favourites']">
+      <ion-icon name="heart"></ion-icon>
+    </ion-button>
+
   </ion-toolbar>
 </ion-header>
 

@@ -5,15 +5,16 @@ import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
 import { FormsModule } from '@angular/forms';
 import { Data } from '../services/data';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { searchOutline } from 'ionicons/icons';
+import { heart } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonSearchbar, FormsModule, IonIcon],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonSearchbar, FormsModule, IonIcon, RouterLink],
 })
 export class HomePage {
 
@@ -36,7 +37,7 @@ export class HomePage {
 
   //Creates a private instance of MyHttpService, Router & Data service.
   constructor(private mhs:MyHttpService, private router:Router, private data:Data) {
-    addIcons({searchOutline});
+    addIcons({searchOutline, heart});
   }
 
   //Uses ngOnInit lifecycle hook to set movies to array and call getTrendingMovies() function.

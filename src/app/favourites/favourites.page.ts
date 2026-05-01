@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
 import { Data } from '../services/data';
 import { addIcons } from 'ionicons';
-import { trashOutline, eyeOutline } from 'ionicons/icons';
+import { trashOutline, eyeOutline, home } from 'ionicons/icons';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class FavouritesPage implements OnInit {
   favourites: any[] = [];
 
   constructor(private data: Data, private router:Router) {
-    addIcons({trashOutline, eyeOutline});
+    addIcons({trashOutline, eyeOutline, home});
   }
 
   ngOnInit() {

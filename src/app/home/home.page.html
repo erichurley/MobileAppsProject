@@ -4,13 +4,19 @@
     <ion-title>
       G00485518
     </ion-title>
+
+    <!-- Navigation button to the favourites page -->
+    <ion-button color="danger" slot="end" [routerLink]="['/favourites']">
+      <ion-icon name="heart"></ion-icon>
+    </ion-button>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
   <!-- Search bar using Ion-searchbar with two way data binding (ngModel). (keyup.enter) allows you to click the enter key to submit -->
-  <ion-searchbar [(ngModel)]="searchString" placeholder="Enter a Movie Name..." (keyup.enter)="searchMovies()"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchString" placeholder="Search for a Movie..." (keyup.enter)="searchMovies()"></ion-searchbar>
   
   <!-- Search button using Ion-button with event binding to call searchMovies() on click -->
   <ion-button (click)="searchMovies()">Search

@@ -5,8 +5,8 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCar
 import { Data } from '../services/data';
 import { HttpOptions } from '@capacitor/core';
 import { MyHttpService } from '../services/my-http.service';
-import { Router } from '@angular/router';
-import { heart } from 'ionicons/icons';
+import { Router, RouterLink } from '@angular/router';
+import { heart, home } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
 @Component({
@@ -14,7 +14,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonIcon]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonIcon, RouterLink]
 })
 export class MovieDetailsPage implements OnInit {
 
@@ -41,7 +41,7 @@ export class MovieDetailsPage implements OnInit {
 
   //Creates a private instance of data service, MyHttpService and Router.
   constructor(private data:Data, private mhs:MyHttpService, private router:Router) { 
-    addIcons({heart});
+    addIcons({heart, home});
   }
 
   //Retrieves selected movie from shared data service, sets cast & crew variables as arrays, calls getCastAndCrew() function.

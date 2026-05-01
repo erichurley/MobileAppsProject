@@ -1,7 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <!-- Displays the movie title as the page name -->
-    <ion-title>{{movie.title}}</ion-title>
+    <!-- Displays the movie title and year of release as the page name -->
+    <ion-title>{{movie.title}} ({{movie.release_date.slice(0,4)}})</ion-title>
+
+    <!-- Navigation button to bring the user to the homepage -->
+    <ion-button slot="end" [routerLink]="['/home']">
+      <ion-icon name="home"></ion-icon>
+    </ion-button>
+
+    <!-- Navigation button to the favourites page -->
+    <ion-button color="danger" slot="end" [routerLink]="['/favourites']">
+      <ion-icon name="heart"></ion-icon>
+    </ion-button>
+
   </ion-toolbar>
 </ion-header>
 

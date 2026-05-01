@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonList, IonListHeader, IonItem } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonList, IonListHeader, IonItem, IonIcon } from '@ionic/angular/standalone';
 import { HttpOptions } from '@capacitor/core';
 import { Data } from '../services/data';
 import { MyHttpService } from '../services/my-http.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { home, heart } from 'ionicons/icons';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonList, IonItem, IonListHeader]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonList, IonItem, IonListHeader, RouterLink, IonIcon]
 })
 export class DetailsPage implements OnInit {
 
@@ -33,7 +35,9 @@ export class DetailsPage implements OnInit {
       url: ''
     }
 
-  constructor(private data:Data, private mhs:MyHttpService, private router:Router) { }
+  constructor(private data:Data, private mhs:MyHttpService, private router:Router) { 
+    addIcons({home, heart});
+  }
 
   //Retrieves selected person from shared data service, calls getPersonDetails() function.
   ngOnInit() {
