@@ -12,7 +12,7 @@
   </ion-button>
 
   <!-- ngFor structural directive creates a new ion card for every movie in the favourites array. -->
-<ion-card *ngFor="let movie of favourites" button (click)="clickMovie(movie)">
+<ion-card *ngFor="let movie of favourites">
 
   <!-- Movie poster displayed by combining the base URL with the movie poster
    path using property binding and string concatenation.  -->
@@ -35,7 +35,11 @@
     <!-- Displays the rating of each movie -->
     <p><b>Rating: {{ movie.vote_average }}</b></p>
 
-    <ion-button color="danger">
+    <ion-button color="success" (click)="clickMovie(movie)">
+      <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button color="danger" (click)="remove(movie)">
       <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
     </ion-button>
 
@@ -44,3 +48,5 @@
 </ion-card>
 
 </ion-content>
+
+ 

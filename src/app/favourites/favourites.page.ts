@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonIcon } from '@ionic/angular/standalone';
 import { Data } from '../services/data';
 import { addIcons } from 'ionicons';
-import { trashOutline } from 'ionicons/icons';
+import { trashOutline, eyeOutline } from 'ionicons/icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ export class FavouritesPage implements OnInit {
   favourites: any[] = [];
 
   constructor(private data: Data, private router:Router) {
-    addIcons({trashOutline});
+    addIcons({trashOutline, eyeOutline});
   }
 
   ngOnInit() {
@@ -35,5 +35,10 @@ export class FavouritesPage implements OnInit {
     this.data.clickedMovie = movie;
     this.router.navigate(['/movie-details']);
   }
+
+  remove(movie: any) {
+  this.data.removeFavourite(movie);
+  this.favourites = this.data.favourites;
+}
 
 }
