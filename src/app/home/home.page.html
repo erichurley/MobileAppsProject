@@ -9,11 +9,13 @@
 
 <ion-content [fullscreen]="true">
 
-  <!-- Search bar using Ion-searchbar with two way data binding (ngModel) -->
-  <ion-searchbar [(ngModel)]="searchString" placeholder="Enter a Movie Name..."></ion-searchbar>
+  <!-- Search bar using Ion-searchbar with two way data binding (ngModel). (keyup.enter) allows you to click the enter key to submit -->
+  <ion-searchbar [(ngModel)]="searchString" placeholder="Enter a Movie Name..." (keyup.enter)="searchMovies()"></ion-searchbar>
   
   <!-- Search button using Ion-button with event binding to call searchMovies() on click -->
-  <ion-button (click)="searchMovies()">Search</ion-button>
+  <ion-button (click)="searchMovies()">Search
+    <ion-icon name="search-outline"></ion-icon>
+  </ion-button>
   
   <!-- Homepage title using string interpolation to dynamically update title -->
   <h1>{{homePageTitle}}</h1>

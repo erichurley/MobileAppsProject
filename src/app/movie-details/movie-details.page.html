@@ -12,8 +12,9 @@
     <ion-card-content>
       <p>{{movie.overview}}</p>
       <br>
-      <ion-button (click)="addToFavourites()">Add To Favourites</ion-button>
-      <ion-button (click)="removeFromFavourites()">Remove From Favourites</ion-button>
+      <ion-button [fill]="buttonFill" (click)="toggleFavourite()">{{buttonText}}
+        <ion-icon slot="start" name="heart"></ion-icon>
+      </ion-button>
     </ion-card-content>
   </ion-card>
   

@@ -60,5 +60,10 @@ export class Data {
     //Save the updated list to storage.
     await this.set('favourites', this.favourites);
   }
+
+  //Function to load the favourites from ionic storage.
+  async loadFavourites() {
+    this.favourites = await this.get('favourites');
+  }  
   
 }

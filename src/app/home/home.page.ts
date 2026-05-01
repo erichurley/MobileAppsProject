@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonList, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonInput, IonSearchbar } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonList, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonInput, IonSearchbar, IonIcon } from '@ionic/angular/standalone';
 import { MyHttpService } from '../services/my-http.service';
 import { HttpOptions } from '@capacitor/core';
 import { FormsModule } from '@angular/forms';
 import { Data } from '../services/data';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { searchOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, RouterLink, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonSearchbar, FormsModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonSearchbar, FormsModule, IonIcon],
 })
 export class HomePage {
 
@@ -34,7 +35,9 @@ export class HomePage {
   }
 
   //Creates a private instance of MyHttpService, Router & Data service.
-  constructor(private mhs:MyHttpService, private router:Router, private data:Data) {}
+  constructor(private mhs:MyHttpService, private router:Router, private data:Data) {
+    addIcons({searchOutline});
+  }
 
   //Uses ngOnInit lifecycle hook to set movies to array and call getTrendingMovies() function.
   ngOnInit() {

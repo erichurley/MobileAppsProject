@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonIcon } from '@ionic/angular/standalone';
 import { Data } from '../services/data';
 import { HttpOptions } from '@capacitor/core';
 import { MyHttpService } from '../services/my-http.service';
 import { Router } from '@angular/router';
+import { heart } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.page.html',
   styleUrls: ['./movie-details.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonIcon]
 })
 export class MovieDetailsPage implements OnInit {
 
@@ -30,25 +31,41 @@ export class MovieDetailsPage implements OnInit {
   apiKey: string = "87f190fd1f3c1281452f0b3458f9401c";
 
   //HTTP options object to store API request URL.
-    options: HttpOptions = {
-      url: ''
-    }
+  options: HttpOptions = {
+    url: ''
+  }
+
+  //Variables to store favourites button text & colour which change depending on whether movie is already in favourites or not.
+  buttonText: string = "Add To Favourites";
+  buttonFill: string = "solid";
 
   //Creates a private instance of data service, MyHttpService and Router.
-  constructor(private data:Data, private mhs:MyHttpService, private router:Router) { }
+  constructor(private data:Data, private mhs:MyHttpService, private router:Router) { 
+    addIcons({heart});
+  }
 
   //Retrieves selected movie from shared data service, sets cast & crew variables as arrays, calls getCastAndCrew() function.
   ngOnInit() {
     this.movie = this.data.clickedMovie;
     this.cast = [];
     this.crew = [];
-    this.getCastAndCrew();
   }
 
-  //Required because ngOnInit() was not being triggered when revisiting the same page - this ensures the selected movie
-  //and the cast/crew are refreshed each time the page is visited.
-  ionViewWillEnter() {
+  //Ensures the selected movie, favourites state, and cast/crew are refreshed each time the page is opened.
+  async ionViewWillEnter() {
     this.movie = this.data.clickedMovie;
+    await this.data.loadFavourites();
+
+    //Check if the movie is in favourites and update the button text and style.
+    if (this.isFavourite()) {
+      this.buttonText = "Remove From Favourites";
+      this.buttonFill = "solid";
+
+    } else {
+        this.buttonText = "Add To Favourites";
+        this.buttonFill = "outline";
+    }
+
     this.getCastAndCrew();
   }
 
@@ -77,12 +94,40 @@ export class MovieDetailsPage implements OnInit {
     this.router.navigate(['/details']);
   }
 
+  //Add movie to favourites
   addToFavourites() {
     this.data.addFavourite(this.movie);
   }
 
+  //Remove movie from favourites
   removeFromFavourites() {
     this.data.removeFavourite(this.movie);
+  }
+
+  //Check if the movie is already in favourites - used to change the state of the favourites button text & style.
+  isFavourite() {
+
+  //Loop through favourites and check if current movie is in there - return true if so, otherwise return false.
+    for (let i = 0; i < this.data.favourites.length; i++) {
+      if (this.data.favourites[i].id == this.movie.id) {
+        return true;
+      }
+  }
+  return false;
+}
+
+  //Toggles the movie between being added to or removed from favourites and updates the button.
+  toggleFavourite() {
+    if (this.isFavourite()) {
+      this.data.removeFavourite(this.movie);
+      this.buttonText = "Add To Favourites";
+      this.buttonFill = "outline";
+
+    } else {
+        this.data.addFavourite(this.movie);
+        this.buttonText = "Remove From Favourites";
+        this.buttonFill = "solid";
+    }
   }
 
 }
