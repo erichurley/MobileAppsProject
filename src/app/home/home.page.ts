@@ -89,4 +89,17 @@ export class HomePage {
     this.data.clickedMovie = movie;
     this.router.navigate(['/movie-details']);
   }
+
+  //Check if the movie is in favourites - used to add favourites icon to movies on the homepage.
+  isFavourite(movie: any) {
+
+  //Loop through favourites and check if current movie is in there - return true if so, otherwise return false.
+    for (let i = 0; i < this.data.favourites.length; i++) {
+      if (this.data.favourites[i].id == movie.id) {
+        return true;
+      }
+  }
+  return false;
+  }
+
 }

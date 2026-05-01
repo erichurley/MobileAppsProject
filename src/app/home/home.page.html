@@ -36,7 +36,11 @@
   <ion-card-header>
 
     <!-- Displays the title of each movie -->
-    <ion-card-title>{{ movie.title }}</ion-card-title>
+    <ion-card-title>{{ movie.title }} 
+
+      <!-- Displays a heart favourite icon next to a movie if the movie is in the favourites list -->
+      <ion-icon *ngIf="isFavourite(movie)" name="heart" color="danger"></ion-icon>
+    </ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
