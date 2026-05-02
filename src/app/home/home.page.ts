@@ -46,6 +46,11 @@ export class HomePage {
     this.getTrendingMovies();
   }
 
+  //Ensures that the favourites are loaded from storage when the page is entered and correct movies are marked.
+  async ionViewWillEnter() {
+    await this.data.loadFavourites();
+}
+
   //Asynchronous function which updates the url and calls get() function from my-http.service.
   async getTrendingMovies() {
     this.options = {
