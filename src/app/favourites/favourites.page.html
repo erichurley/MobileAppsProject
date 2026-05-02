@@ -13,7 +13,7 @@
 <ion-content [fullscreen]="true">
 
   <!-- Heading for favourites list -->
-  <h1>Your Favourites List:</h1>
+  <h1>Your Favourites List ({{favourites.length}}):</h1>
 
   <!-- Placeholder text and button for if the favourites is empty - prompts user back to homepage with routerlink button -->
   <ion-button *ngIf="favourites.length > 0" color="danger" (click)="removeAll()">Remove All
