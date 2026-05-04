@@ -63,7 +63,14 @@ export class Data {
 
   //Function to load the favourites from ionic storage.
   async loadFavourites() {
-    this.favourites = await this.get('favourites');
+    let favs = await this.get('favourites');
+
+    //Check if favourites is null and if so, an empty array is created to prevent null errors.
+    if (favs == null) {
+      this.favourites = [];
+    } else { 
+      this.favourites = favs;
+    }
   }  
   
   //Function to clear all favourites
