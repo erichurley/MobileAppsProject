@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonList, IonListHeader, IonItem, IonIcon } from '@ionic/angular/standalone';
@@ -17,6 +17,9 @@ import { home, heart } from 'ionicons/icons';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonList, IonItem, IonListHeader, RouterLink, IonIcon]
 })
 export class DetailsPage implements OnInit {
+
+  //Used for scrolling the user to the top of the page where IonContent is.
+  @ViewChild(IonContent) content!: IonContent;
 
   //Variable to hold selected person
   person: any;
@@ -45,6 +48,11 @@ export class DetailsPage implements OnInit {
     this.getPersonDetails();
     this.getOtherMovies();
   }
+
+  //Forces scroll back to the top of the page. Runs every time the page loads.
+  ionViewDidEnter() {
+    this.content.scrollToTop(0);
+}
 
   //Asynchronous function to retrieve person info.
   async getPersonDetails() { 

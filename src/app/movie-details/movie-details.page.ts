@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardContent, IonIcon } from '@ionic/angular/standalone';
@@ -17,6 +17,9 @@ import { addIcons } from 'ionicons';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonIcon, RouterLink]
 })
 export class MovieDetailsPage implements OnInit {
+
+  //Used for scrolling the user to the top of the page where IonContent is.
+  @ViewChild(IonContent) content!: IonContent;
 
   //Variable to hold selected movie data
   movie: any;
@@ -71,6 +74,11 @@ export class MovieDetailsPage implements OnInit {
 
     this.getCastAndCrew();
   }
+
+  //Forces scroll back to the top of the page. Runs every time the page loads.
+  ionViewDidEnter() {
+    this.content.scrollToTop(0);
+}
 
   //Asynchronous function to retrieve cast & crew movie info.
   async getCastAndCrew() { 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonItem, IonList, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonInput, IonSearchbar, IonIcon } from '@ionic/angular/standalone';
 import { MyHttpService } from '../services/my-http.service';
@@ -17,6 +17,9 @@ import { heart } from 'ionicons/icons';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, CommonModule, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonSearchbar, FormsModule, IonIcon, RouterLink],
 })
 export class HomePage {
+
+  //Used for scrolling the user to the top of the page where IonContent is.
+  @ViewChild(IonContent) content!: IonContent;
 
   //Variable to store movies data.
   movies: any;
@@ -49,6 +52,11 @@ export class HomePage {
   //Ensures that the favourites are loaded from storage when the page is entered and correct movies are marked.
   async ionViewWillEnter() {
     await this.data.loadFavourites();
+}
+
+  //Forces scroll back to the top of the page. Runs every time the page loads.
+  ionViewDidEnter() {
+    this.content.scrollToTop(0);
 }
 
   //Asynchronous function which updates the url and calls get() function from my-http.service.
