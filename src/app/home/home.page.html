@@ -31,7 +31,7 @@
 
   <!-- Movie poster displayed by combining the base URL with the movie poster
    path using property binding and string concatenation.  -->
-  <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path">
+  <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path">
 
   <!-- If poster does not exist. Show 'no image' -->
   <p *ngIf="!movie.poster_path">No Image</p>
