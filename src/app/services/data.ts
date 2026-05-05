@@ -1,3 +1,6 @@
+/* Shared data service which is used to store and manage app data such as selected movies, selected people
+and the favourites list. This service also handles persistence using Ionic Storage. */
+
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
@@ -6,22 +9,27 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class Data {
 
+  //Variables used to store data for selected movie, selected person and favourites list.
   clickedMovie: any;
   clickedPerson: any;
   favourites: any[] = [];
 
+  //Initialises Ionic storage when service is created.
   constructor(private storage:Storage) {
     this.init();
   }
 
+  //Creates storage instance.
   async init() {
     await this.storage.create();
   }
 
+  //Stores value in Ionic Storage using a key.
   async set(key: string, value: any) {
     await this.storage.set(key, value);
   }
 
+  //Retrieves value from Ionic Storage using a key.
   async get(key: string) {
     return await this.storage.get(key);
   }
