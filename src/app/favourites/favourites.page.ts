@@ -17,15 +17,19 @@ import { RouterLink } from '@angular/router';
 })
 export class FavouritesPage implements OnInit {
 
+  //Array used to store list of favourite movies.
   favourites: any[] = [];
 
+  //Initialises the icons and injects services.
   constructor(private data: Data, private router:Router) {
     addIcons({trashOutline, eyeOutline, home});
   }
 
+  //Lifecycle hook - not used here.
   ngOnInit() {
   }
 
+  //Load favourites from storage each time page is entered.
   async ionViewWillEnter() {
   await this.data.loadFavourites();
   this.favourites = this.data.favourites;
@@ -37,11 +41,13 @@ export class FavouritesPage implements OnInit {
     this.router.navigate(['/movie-details']);
   }
 
+  //Remove single movie from favourites and update list.
   remove(movie: any) {
   this.data.removeFavourite(movie);
   this.favourites = this.data.favourites;
 }
 
+//Remove all movies from list and set list as empty.
   removeAll() {
   this.data.clearFavourites();
   this.favourites = [];

@@ -86,6 +86,7 @@ export class DetailsPage implements OnInit {
 
   }
 
+  //Stores selected movie in data service and navigates to movie-details page.
   openOtherMovie(movie: any) {
     this.data.clickedMovie = movie;
     this.router.navigate(['/movie-details']);
